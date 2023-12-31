@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>east</title>
+    <link>/</link>
+    <description>Recent content on east</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Problems with digital &#39;ownership&#39;</title>
+      <link>/blog/problems_with_digital_ownership/</link>
+      <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>/blog/problems_with_digital_ownership/</guid>
+      <description>Introduction. What I mean by &amp;lsquo;digital ownership&amp;rsquo; i1s the online purchasing of media or subscriptions through platforms like&#xA;Amazon Prime Video, Netflix, and Hulu. Spotify, SoundCloud, and Apple Music. Steam, Epic Games Store, and EA. The Problem. You do not own what you purchase.&#xA;When purchased digitally the consumer is paying to lease media which expires whenever the company you purchased it through feels like it.&#xA;It&amp;rsquo;s a serious issue when media purchased is out of the control of the user and is unable to be used offline without the need to sign into any account.</description>
+    </item>
+  </channel>
+</rss>
