@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Tiling window managers. | east</title>
+<meta name="title" content="Tiling window managers." />
+<meta name="description" content="What is a &ldquo;Tiling window manager&rdquo;? A tiling window manager is a window manager that organizes windows in a non-overlapping grid layout based on the amount of free space on your screen.
+This differs from the more common stacking window manager most are accustomed to which usually has overlapping windows you move manually.
+Advantages Productivity While it definitely is dependent on the user, for me it&rsquo;s quicker to manage applications using keybinds." />
+<meta name="keywords" content=",," />
+
+
+<meta property="og:title" content="Tiling window managers." />
+<meta property="og:description" content="What is a &ldquo;Tiling window manager&rdquo;? A tiling window manager is a window manager that organizes windows in a non-overlapping grid layout based on the amount of free space on your screen.
+This differs from the more common stacking window manager most are accustomed to which usually has overlapping windows you move manually.
+Advantages Productivity While it definitely is dependent on the user, for me it&rsquo;s quicker to manage applications using keybinds." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/window_managers/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2024-03-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-03-20T00:00:00+00:00" />
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Tiling window managers."/>
+<meta name="twitter:description" content="What is a &ldquo;Tiling window manager&rdquo;? A tiling window manager is a window manager that organizes windows in a non-overlapping grid layout based on the amount of free space on your screen.
+This differs from the more common stacking window manager most are accustomed to which usually has overlapping windows you move manually.
+Advantages Productivity While it definitely is dependent on the user, for me it&rsquo;s quicker to manage applications using keybinds."/>
+
+
+
+<meta itemprop="name" content="Tiling window managers.">
+<meta itemprop="description" content="What is a &ldquo;Tiling window manager&rdquo;? A tiling window manager is a window manager that organizes windows in a non-overlapping grid layout based on the amount of free space on your screen.
+This differs from the more common stacking window manager most are accustomed to which usually has overlapping windows you move manually.
+Advantages Productivity While it definitely is dependent on the user, for me it&rsquo;s quicker to manage applications using keybinds."><meta itemprop="datePublished" content="2024-03-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-03-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="270">
+<meta itemprop="keywords" content=",," />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+
+   
+  header a h2 {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  header nav {
+    display: inline;
+  }
+   
+
+  nav a {
+    margin-right: 10px;
+
+    color: #313a3d;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    nav a {
+      color: #e0e0e0;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>east</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/links/">Links</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>Tiling window managers.</h1>
+<p>
+  <i>
+    <time datetime='2024-03-20' pubdate>
+      20 Mar, 2024
+    </time>
+  </i>
+</p>
+
+<content>
+  <h2 id="what-is-a-tiling-window-manager">What is a &ldquo;Tiling window manager&rdquo;?</h2>
+<p>A <a href="https://en.wikipedia.org/wiki/Tiling_window_manager">tiling window manager</a> is a window manager that organizes windows in a non-overlapping grid layout based on the amount of free space on your screen.</p>
+<p>This differs from the more common <a href="https://en.wikipedia.org/wiki/Stacking_window_manager">stacking window manager</a> most are accustomed to which usually has overlapping windows you move manually.</p>
+<h2 id="advantages">Advantages</h2>
+<h4 id="productivity"><strong>Productivity</strong></h4>
+<p>While it definitely is dependent on the user, for me it&rsquo;s quicker to manage applications using keybinds.</p>
+<p>I also find <a href="https://dwm.suckless.org">dwm&rsquo;s</a> tags (fancy workspaces) invaluable for single monitor productivity.</p>
+<h4 id="lightweight"><strong>Lightweight</strong></h4>
+<p>Most tiling managers are extremely small and resource efficient which gives them a <em>&ldquo;snappy&rdquo;</em> feeling.</p>
+<p>While those things aren&rsquo;t a inherent trait it generally is the case.</p>
+<h4 id="customization--portability"><strong>Customization &amp; Portability</strong></h4>
+<p>Customizing is usually a big part of tiling window managers</p>
+<p>Once everything is set up though the system configuration is portable through the configuration file or source-code.</p>
+<h2 id="disadvantages">Disadvantages</h2>
+<h4 id="gui"><strong>GUI</strong></h4>
+<p>Some <a href="https://en.wikipedia.org/wiki/Graphical_user_interface">GUI</a> programs don&rsquo;t work well with tiling window managers which can mean decreased usability and bizarre window sizing.</p>
+<p>GUI programs that have multiple windows (especially with varying sizes) usually behave weirdly.</p>
+<h4 id="learning-curve"><strong>Learning curve</strong></h4>
+<p>Stacking window managers typically come as a complete <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop enviromment</a> and are relatively intuitive to use.</p>
+<p>They rely heavily on the mouse which is what most are used to.</p>
+<p>Tiling window managers are generally keyboard focused which isn&rsquo;t flaw in itself but is different from convention and requires getting used to.</p>
+<h2 id="thoughts">Thoughts</h2>
+<p>They have genuine utility in specific circumstances.<br>
+Laptops for example feel rather clunky to use with a mouse focused window manager and the added benefit of low resource usage makes tiling window managers work better in my opinion for productivity.</p>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer><small>Made with <a href="https://codeberg.org/east/Polar-Bear/">Polar Bear ʕ•ᴥ• ʔ</a></small></footer>
+
+    
+</body>
+
+</html>
