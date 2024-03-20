@@ -2,19 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/window_managers/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/problems_with_digital_ownership/</loc>
     <lastmod>2023-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/blog/</loc>
-    <lastmod>2023-07-25T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/categories/</loc>
   </url><url>
-    <loc>/blog/problems_with_digital_ownership/</loc>
-    <lastmod>2023-07-25T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/links/</loc>
   </url><url>
-    <loc>/categories/</loc>
-  </url><url>
-    <loc>/links/</loc>
-  </url><url>
-    <loc>/tags/</loc>
+    <loc>//localhost:1313/tags/</loc>
   </url>
 </urlset>
