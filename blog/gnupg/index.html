@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="//localhost:1313/favicon.ico" />
+<title>GnuPG | east</title>
+<meta name="title" content="GnuPG" />
+<meta name="description" content="Basics to starting with GnuPG/GPG" />
+<meta name="keywords" content=",," />
+
+
+<meta property="og:url" content="//localhost:1313/blog/gnupg/">
+  <meta property="og:site_name" content="east">
+  <meta property="og:title" content="GnuPG">
+  <meta property="og:description" content="Basics to starting with GnuPG/GPG">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-02-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-14T00:00:00+00:00">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GnuPG">
+  <meta name="twitter:description" content="Basics to starting with GnuPG/GPG">
+
+
+
+
+  <meta itemprop="name" content="GnuPG">
+  <meta itemprop="description" content="Basics to starting with GnuPG/GPG">
+  <meta itemprop="datePublished" content="2025-02-14T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-02-14T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1041">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+
+   
+  header a h2 {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  header nav {
+    display: inline;
+  }
+   
+
+  nav a {
+    margin-right: 10px;
+
+    color: #313a3d;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    nav a {
+      color: #e0e0e0;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>east</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/blog/">Blog</a>
+
+<a href="/socials/">Socials</a>
+
+<a href="/contact/">Contact</a>
+
+
+</nav>
+</header>
+  <main>
+
+<h1>GnuPG</h1>
+<p>
+  <i>
+    <time datetime='2025-02-14' pubdate>
+      14 Feb, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <h2 id="what-is-gnu-privacy-guard-gnupg">What is Gnu Privacy Guard (GnuPG)?</h2>
+<p><em><a href="https://gnupg.org/">GnuPG</a></em> (GPG) is libre cryptography software that&rsquo;s interoperable with Symantec’s proprietary PGP software (OpenPGP Standard).<br>
+GnuPG is used for encrypting files and communications, as well as signing and verifying them.</p>
+<h3 id="asymmetric-vs-symmetric--encryption">Asymmetric vs Symmetric  encryption</h3>
+<p>GnuPG can do both asymmetric and symmetric encryption.</p>
+<ul>
+<li>
+<p><strong>Asymmetric encryption</strong> has two mathematically linked keys. A public key (for encrypting) and a private key (for decrypting).<br>
+Only the private key can decrypt information encrypted with its public counterpart.<br>
+If others want to encrypt data and address it to you, they can create a copy of your public key, encrypt the data, and send it to you.</p>
+</li>
+<li>
+<p><strong>Symmetric encryption</strong> only uses one key for encryption and decryption.<br>
+This relies on a &lsquo;<a href="https://en.wikipedia.org/wiki/Shared_secret">shared secret.</a>&rsquo; (typically a password), which means anyone, regardless of who they are, can decrypt if they know that &lsquo;shared secret&rsquo;.<br>
+It&rsquo;s a lot less secure since instead of exchanging public keys, which can only encrypt (asymmetric). You exchange the encrypted information and the mode of decryption, which extends the burden of trust as well as adding more points for failure.</p>
+</li>
+</ul>
+<p>If you understand how things work, <a href="https://help.riseup.net/en/security/message-security/openpgp/best-practices">best practices</a> come naturally.</p>
+<h2 id="creating-a-key-pair-private--public">Creating a key pair (Private &amp; Public)</h2>
+<p>The following sections are primarily intended for Linux users.<br>
+If you are using Windows, you can use <a href="https://www.gpg4win.org/">gpg4win</a> or follow along using <a href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL</a>.</p>
+<p>Firstly, install GnuPG with your package manager; for me, it’s:</p>
+<p><code>emerge app-crypt/gnupg</code></p>
+<p>You can then create a GnuPG key pair with:</p>
+<p><code>gpg --full-gen-key</code></p>
+<p>If your version of GPG is up to date (<em><code>gpg --version</code></em>), defaults work well for most use cases;<br>
+It&rsquo;s wise though to learn what&rsquo;s best applicable for what you need.</p>
+<p>Setting an expiration date of under two years is typically best practice for keys.<br>
+The expiration date can be extended, shortened, or revoked when seen fit.</p>
+<h3 id="backing-keys-up">Backing keys up</h3>
+<p>It’s preferable when backing up your key pair to store it offline (i.e., removable media).<br>
+You can even back up your key to physically using <a href="https://www.jabberwocky.com/software/paperkey/">Paperkey</a>.</p>
+<h2 id="sharing--adding-keys">Sharing &amp; Adding Keys</h2>
+<p>List keys using:<br>
+<code>gpg --list-keys</code></p>
+<p>Sharing your key with others can be done with:<br>
+<code>gpg --output example.key --armor --export example@example.org</code></p>
+<p>You can import keys manually through files using the <em><code>--import</code></em> option.<br>
+<code>gpg --import example.key</code></p>
+<h3 id="key-servers">Key servers</h3>
+<p>One method of sharing one&rsquo;s public key is a &lsquo;<a href="https://en.wikipedia.org/wiki/Key_server_(cryptographic)">key server.</a>&rsquo;.</p>
+<p>You can search for a key using a key server with:<br>
+<code>gpg --keyserver pgp.mit.edu  --search-keys [keyid]</code></p>
+<p>Some popular key servers are listed below.
+(WARNING: Some key servers don’t allow you to delete keys; others do.)</p>
+<ul>
+<li><a href="https://pgp.mit.edu">pgp.mit.edu</a></li>
+<li><a href="https://keys.openpgp.org">keys.openpgp.org</a></li>
+</ul>
+<p>Or try hosting your own key server:</p>
+<ul>
+<li><a href="https://gitlab.com/keys.openpgp.org/hagrid">Hagrid Key server</a></li>
+<li><a href="https://github.com/mailvelope/keyserver">Mailvelope Key server</a></li>
+</ul>
+<h2 id="key-trust">Key trust</h2>
+<p>After you import a foreign key, you might see that it&rsquo;s trust is listed as <em><code>[Unknown]</code></em></p>
+<p>This means the key is untrusted.<br>
+Anyone can make a key claiming to be anyone; it’s important to trust the source, verify the authenticity, and cross-reference key fingerprints.<br>
+You can view key fingerprints using:<br>
+<code>gpg --fingerprint example@example.org</code></p>
+<pre tabindex="0"><code>pub   ed25519 2025-02-03 [SC]
+      20ED B890 8134 D318 0EA7  FE62 24AE 3AE7 39D5 5B60
+uid           [ultimate] example &lt;example@example.org&gt;
+sub   cv25519 2025-02-03 [E]
+</code></pre><p>Trust values are used to indicate how much you trust someone and their judgment when signing other keys.</p>
+<ol>
+<li>= I don&rsquo;t know or won&rsquo;t say</li>
+<li>= I do NOT trust</li>
+<li>= I trust marginally</li>
+<li>= I trust fully</li>
+<li>= I trust ultimately</li>
+</ol>
+<p>You can sign other keys which trusts that key by editing the key and typing the <em><code>sign</code></em> command.<br>
+<code>gpg --edit-key [keyid]</code><br>
+<code>gpg&gt; sign</code><br>
+<code>gpg&gt; save</code><br>
+Trust level can also be modified using the <em><code>trust</code></em> command after doing <code>gpg --edit-key [keyid]</code>.</p>
+<p>You can send back the signed public key, and the added signature adds your stamp of approval on its legitimacy.<br>
+This is a simplified explanation of <a href="https://en.wikipedia.org/wiki/Web_of_trust">&lsquo;Web of Trust,&rsquo;</a> in which your participation is optional.</p>
+<h2 id="encrypting--decrypting">Encrypting &amp; Decrypting</h2>
+<h3 id="symmetric">Symmetric</h3>
+<p>You can <strong>encrypt</strong> files with symmetric encryption using:</p>
+<p><code>gpg --verbose --no-symkey-cache --symmetric example.png</code><br>
+<em><code>--no-symkey-cache</code></em> is unnecessary; it just doesn’t cache the password locally after encrypting.<br>
+<em><code>--symmetricuses</code></em> the default cipher algorithm (version dependent); if you wish to specify another, you can use <em><code>--cipher-algo name</code></em>.</p>
+<p><strong>Decrypting</strong> is the same in reverse, taking the output of the decrypted file and copying the output onto the same file type as the previously encrypted file.</p>
+<p><code>gpg --decrypt example.txt.gpg &gt; example.png</code></p>
+<h3 id="asymmetric">Asymmetric</h3>
+<p>You can <strong>encrypt</strong> files with asymmetric encryption using:</p>
+<p><code>gpg  --local-user your@gpg.key --recipient example@example.org  --encrypt example.flac</code><br>
+The <em><code>--recipient</code></em> option can be your own key if you want to require your own private key to decrypt files.</p>
+<p><strong>Decrypting</strong> with asymmetric is the same process as decrypting symmetric.<br>
+<code>gpg --decrypt example.flac.gpg &gt; example.flac</code></p>
+<h2 id="signing">Signing</h2>
+<p>If you’re certain a key is from who it claims to be from,<br>
+Cryptographic signatures allow people to verify if signed data was tampered with by anyone.</p>
+<h3 id="signing--verifying">Signing &amp; Verifying</h3>
+<p><code>gpg --sign example.txt -u example@example.org</code><br>
+The <em><code>--sign</code></em> option outputs a compressed signed version of the file you signed.</p>
+<h3 id="detached-signing">Detached signing</h3>
+<p><code>gpg --detach-sig example.txt -u example@example.org</code></p>
+<p>Detached signatures output a .sig file alongside the original uncompressed file you signed.<br>
+Which can be verified using:<br>
+<code>gpg --verify file.txt.sig file.txt</code></p>
+<h3 id="clearsign">Clearsign</h3>
+<p>If you&rsquo;d like to create a clear text signed message, you can do so using the <em><code>--clearsign</code></em> option.</p>
+<p><code>echo &quot;Example Message.&quot; | gpg --clearsign -u your@gpg.key &gt; message.txt</code><br>
+This command will output the text into GPG, sign it, and then output the signed message into a text file.</p>
+<p>Verifying signatures can be done with the <em><code>--verify</code></em> option.<br>
+If you change any of the contents of the data being sent the signature won&rsquo;t validate.</p>
+<p>Example below :</p>
+<pre tabindex="0"><code>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+This is a example message by example@example.org.
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQg7biQgTTTGA6n/mIkrjrnOdVbYAUCZ6f9pwAKCRAkrjrnOdVb
+YC+KAP47cIl6dwzIEyNBTbg8Savp0Zy+Wf4XR7KGlCrK6cXYzgEAgkE0UneZSkzM
+MpiHZ7XwaMNKmb6ssvLoWbpDg+9wkwQ=
+=ihYn
+-----END PGP SIGNATURE-----
+</code></pre><pre tabindex="0"><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEZ6DpxxYJKwYBBAHaRw8BAQdADSeapAfibwGeyG9cE5LQ8/cqcrWcyKtz8gWE
+QXcUWMC0HWV4YW1wbGUgPGV4YW1wbGVAZXhhbXBsZS5vcmc+iJMEExYKADsWIQQg
+7biQgTTTGA6n/mIkrjrnOdVbYAUCZ6f68gIbAwULCQgHAgIiAgYVCgkICwIEFgID
+AQIeBwIXgAAKCRAkrjrnOdVbYA0sAP4hKTiSkMysTxhkqP8yz+vmJx0Rm6ylU1er
+AkjzQrbsEwEAkwFry3PcuswbEVevZFygROELCq+bfTeSlNyZmL0KPAm4OARnoOnH
+EgorBgEEAZdVAQUBAQdA/rBsRXHJFJMQWv8E/jZUQ+sIooHlX+bSlAEs4+nKZTQD
+AQgHiHgEGBYKACAWIQQg7biQgTTTGA6n/mIkrjrnOdVbYAUCZ6DpxwIbDAAKCRAk
+rjrnOdVbYNiHAQCAL/vkAQWw95lSFKlsbfpf/2wDcusPfMr2DJckkS/eewD9Fqo6
+HptNb+K8VtAKHliPy6aLQyGxvCY6xFeJqM1TugA=
+=skiv
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre><p>If you haven’t properly trusted the key that signed, you may get this warning even if it’s a valid signature.</p>
+<pre tabindex="0"><code>gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+</code></pre><h2 id="resources">Resources</h2>
+<p>Keysigning - <a href="https://wiki.debian.org/Keysigning">debian.org</a><br>
+OpenPGP Best Practices - <a href="https://help.riseup.net/en/security/message-security/openpgp/best-practices">riseup.net</a><br>
+Validating other keys on your public keyring - <a href="https://www.gnupg.org/gph/en/manual/x334.html">gnupg.org</a><br>
+The GNU Privacy Guard Manual - <a href="https://www.gnupg.org/documentation/manuals/gnupg/">gnupg.org</a><br>
+Web of trust - <a href="https://en.wikipedia.org/wiki/Web_of_trust">Wikipedia.org</a></p>
+<p>(If information is incorrect or you wish to propose a change to the article, contact me.)</p>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer><small>Made with <a href="https://codeberg.org/east/Polar-Bear/">Polar Bear ʕ•ᴥ• ʔ</a></small></footer>
+
+    
+</body>
+
+</html>
