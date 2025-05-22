@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Private Messengers (plus XMPP over Tor &amp; I2P) | east</title>
+<meta name="title" content="Private Messengers (plus XMPP over Tor &amp; I2P)" />
+<meta name="description" content="The importance of encryption &#43; XMPP over Tor &amp; I2P." />
+<meta name="keywords" content=",," />
+
+
+<meta property="og:url" content="/blog/xmpp_tor_and_i2p/">
+  <meta property="og:site_name" content="east">
+  <meta property="og:title" content="Private Messengers (plus XMPP over Tor &amp; I2P)">
+  <meta property="og:description" content="The importance of encryption &#43; XMPP over Tor &amp; I2P.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-05-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-22T00:00:00+00:00">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Private Messengers (plus XMPP over Tor &amp; I2P)">
+  <meta name="twitter:description" content="The importance of encryption &#43; XMPP over Tor &amp; I2P.">
+
+
+
+
+  <meta itemprop="name" content="Private Messengers (plus XMPP over Tor &amp; I2P)">
+  <meta itemprop="description" content="The importance of encryption &#43; XMPP over Tor &amp; I2P.">
+  <meta itemprop="datePublished" content="2025-05-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-22T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1521">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+
+   
+  header a h2 {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  header nav {
+    display: inline;
+  }
+   
+
+  nav a {
+    margin-right: 10px;
+
+    color: #313a3d;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    nav a {
+      color: #e0e0e0;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>east</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/blog">Blog</a>
+
+<a href="/socials">Socials</a>
+
+<a href="/contact">Contact</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>Private Messengers (plus XMPP over Tor &amp; I2P)</h1>
+<p>
+  <i>
+    <time datetime='2025-05-22' pubdate>
+      22 May, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <h2 id="messengers-and-metadata">Messengers and Metadata</h2>
+<p>A lot of modern messengers people use masquerade as privacy-respecting.<br>
+These supposedly &ldquo;privacy-respecting&rdquo; messengers commonly exhibit opposite behaviors<br>
+Selling out their users&rsquo; data to private companies, governments, or even publicly due to a database hack.</p>
+<p>Privacy is not the same thing as anonymity.<br>
+Knowing &lsquo;Jane Doe&rsquo; talked to &lsquo;John Smith&rsquo; at a certain time, even if information of the conversation may be private, has a lot of inferable information attached;<br>
+This Metadata is used constantly for invasions of privacy and human rights.</p>
+<blockquote>
+<p><strong>&ldquo;We Kill People Based On Metadata&rdquo;</strong>
+- Former CIA and NSA Director Michael Hayden</p>
+</blockquote>
+<p>The opposite is also true: anonymous isn&rsquo;t always private (e.g. Imageboards, Protests, etc).</p>
+<p>It&rsquo;s important to be mindful of how you communicate with others.<br>
+Encryption algorithms aren&rsquo;t safe forever, and previously secure information can later be decrypted (e.g <a href="https://en.wikipedia.org/wiki/Harvest_now%2C_decrypt_later">harvest now, decrypt later</a>).<br>
+The ideal solution would incorporate both anonymity and privacy.</p>
+<h2 id="the-importance-of-encryption-and-its-image-problems">The importance of encryption and it&rsquo;s image problems.</h2>
+<p>In a now deleted post, staff of the popular messaging platform &ldquo;Discord&rdquo; used <a href="https://www.reddit.com/r/discordapp/comments/8nzb5d/comment/e001lr1/">disinformation</a> and <a href="https://en.wikipedia.org/wiki/Think_of_the_children">stretch arguments</a> to paint the people who want encryption as criminals; Implying <em>&ldquo;privacy doesn&rsquo;t matter because you have nothing to hide&rdquo;</em>.</p>
+<blockquote>
+<p><strong>&ldquo;Arguing that you don’t care about the right to privacy because you have nothing to hide is no different than saying you don’t care about free speech because you have nothing to say.&rdquo;</strong>
+- Edward Snowden</p>
+</blockquote>
+<p>Morality is not legality; many places exist where doing the right thing, or <a href="https://www.npr.org/2024/09/02/g-s1-20579/iran-sentenced-12-years-tweet-supreme-leader">anything</a> is a crime. For some people in some places, even existing is a crime.<br>
+Complicity with having your privacy invaded is only acceptable until it isn&rsquo;t, when you have a reason to criticize or hide from those in power.<br>
+Separately from government surveillance, many examples of <a href="https://en.wikipedia.org/wiki/Yahoo_data_breaches">security failures</a> and unencrypted messages getting leaked publicly due to the service getting hacked.<br>
+Even if I have nothing to hide, it&rsquo;s an undesirable outcome.</p>
+<h3 id="what-can-we-do-about-it">What can we do about it?</h3>
+<p>Many encrypted messengers exist for many different types of people.<br>
+My choice for an encrypted messenger won&rsquo;t be the best for another user.<br>
+Of course some messengers should never be used, but a lot have unique advantages that make them worth using over another.<br>
+You should make your own choice based on your <a href="https://en.wikipedia.org/wiki/Threat_model">threat model</a> and the type of people you need to communicate with.</p>
+<p>Some current standout options are <a href="https://getsession.org/">Session</a>, <a href="https://jami.net/">Jami</a>, <a href="https://simplex.chat/">SimpleX</a>, and <a href="https://briarproject.org/">Briar</a>.<br>
+A few comparison lists are in the &ldquo;Resources&rdquo; section of this page.</p>
+<h1 id="xmpp">XMPP</h1>
+<p>XMPP by default isn&rsquo;t the best choice for anonymity or privacy.<br>
+Despite this, XMPP is one of my favorite options due to the control it gives end users.<br>
+Using XMPP you don&rsquo;t need a phone number to sign up, you don&rsquo;t have to use a certain encryption protocol, you can even host your own server.<br>
+It&rsquo;s decentralized, similar to email. (e.g. A Gmail account can send email to someone using an Outlook account and vice versa (applied to nearly any server)).</p>
+<h2 id="self-hosting-xmpp-free-privately-and-anonymously">Self hosting XMPP (Free, Privately, and Anonymously)</h2>
+<p>Making your own XMPP server has a relatively low barrier to entry; all you need is a spare computer/server.<br>
+No clearnet domain name is required with a caveat: If you want to communicate with others who are using a Clearnet domain (e.g. <a href="https://conversations.im/">conversations.im</a>),
+you will* need a domain name, but this won&rsquo;t cover Clearnet hosting.<br>
+The most privacy-respecting way to use XMPP (Tor &amp; I2P) doesn&rsquo;t have any associated costs besides a spare computer/server and electricity.<br>
+Using Tor or I2P hides both the location of the user and server, and self-hosting gives you complete control over data.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>It is assumed to have a moderate degree of technical knowledge and the ability to read manuals (this is not an exhaustive tutorial).<br>
+You can use both Tor, I2P,  and Clearnet in the same setup; You don&rsquo;t need to choose both but you can.</p>
+<p>The software you&rsquo;ll need is:</p>
+<ul>
+<li><a href="https://wiki.gentoo.org/wiki/Tor">Tor</a> (daemon)</li>
+<li><a href="https://i2pd.website/">I2Pd</a></li>
+<li><a href="https://prosody.im/">Prosody</a></li>
+</ul>
+<p>Enable and start Tor and/or I2pd as startup service via your init system.</p>
+<p><code>prosodyctl about</code> will show information about prosody:</p>
+<pre tabindex="0"><code># Prosody directories
+Data directory:     /var/lib/prosody
+Config directory:   /etc/prosody
+Source directory:   /usr/lib/prosody
+Plugin directories:
+  /var/lib/prosody/custom_plugins
+  /usr/lib/prosody/modules/
+</code></pre><p>If no <code>custom_plugins</code> directory exists, create one in your prosody &ldquo;Data directory&rdquo;.</p>
+<p>Once in the &ldquo;Custom Plguins&rdquo; folder:<br>
+<code>git clone https://github.com/majestrate/mod_darknet</code></p>
+<p>It&rsquo;s also required to have the <a href="https://modules.prosody.im/mod_onions">mod_onions</a> module installed for tor.</p>
+<h1 id="tor-onion">Tor (Onion)</h1>
+<p>You&rsquo;ll need an Onion Address, to do so edit the <code>torrc</code> file (usually located in <code>/etc/tor/</code>).</p>
+<p>Add the following lines (Changing &ldquo;<code>/path/to/tor_xmpp_hidden_service/</code>&rdquo;):</p>
+<pre tabindex="0"><code>HiddenServiceDir /path/to/tor_xmpp_hidden_service/
+HiddenServicePort 5222 127.0.0.1:5222
+HiddenServicePort 5269 127.0.0.1:5269
+HiddenServicePort 5280 127.0.0.1:5280
+HiddenServicePort 5281 127.0.0.1:5281
+</code></pre><p>The Tor daemon will need to be restarted which will then generate a Tor address.<br>
+You can use the automatically generated address, <em>or</em> you could generate a vanity address using <a href="https://github.com/cathugger/mkp224o">mkp224o</a>.</p>
+<p>To find our onion address:<br>
+<code>cat /path/to/tor_xmpp_hidden_service/hostname</code></p>
+<p>It should give a long output similar to this:
+<code>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.onion</code>.<br>
+We&rsquo;ll then need to add the below lines to <code>prosody.cfg.lua</code> file in the prosody &ldquo;Config directory&rdquo;.<br>
+Replacing all mentions of <em>&ldquo;onionaddress.onion&rdquo;</em> with that address without removing subdomains (e.g. <em><strong>upload</strong></em>.onionaddress.onion).</p>
+<p>My <a href="../prosody.cfg.lua">prosody.cfg.lua</a> for reference (Could be outdated in the future).</p>
+<pre tabindex="0"><code>VirtualHost &#34;onionaddress.onion&#34;
+      modules_enabled = { &#34;onions&#34; };
+      onions_only = true;
+      disco_items = {
+          { &#34;muc.onionaddress.onion&#34;, &#34;Public Chatrooms&#34; };
+          { &#34;upload.onionaddress.onion&#34;, &#34;Upload Files&#34; };
+      }
+
+Component &#34;muc.onionaddress.onion&#34; &#34;muc&#34;
+        modules_enabled = { &#34;onions&#34; };
+        onions_only = true;
+
+Component &#34;upload.onionaddress.onion&#34; &#34;http_file_share&#34;
+        modules_enabled = { &#34;onions&#34; };
+        onions_only = true;
+        http_file_share_daily_quota = 200*1024*1024; -- 200 MiB
+        http_file_share_expires_after = 7 * 86400; -- one week in seconds
+        http_file_share_size_limit = 100*1024*1024; -- 100 MiB
+</code></pre><h1 id="i2p">I2P</h1>
+<p>You&rsquo;ll need I2P addresses to host XMPP, to do so we&rsquo;ll add the following lines to I2P&rsquo;s <code>tunnels.conf</code> file. (usually in <code>/etc/i2pd/</code>)</p>
+<pre tabindex="0"><code>[prosody-s2s]
+type=server
+host=127.0.0.1
+port=5269
+inport=5269
+inbound.quantity = 2
+outbound.quantity = 2
+keys=prosody.dat
+
+[prosody-c2s]
+type=server
+host=127.0.0.1
+port=5222
+inport=5222
+inbound.quantity = 2
+outbound.quantity = 2
+keys=prosody.dat
+
+[prosody-s2s-muc]
+type=server
+host=127.0.0.1
+port=5269
+inport=5269
+inbound.quantity = 2
+outbound.quantity = 2
+keys=prosodymuc.dat
+
+[prosody-c2s-muc]
+type=server
+host=127.0.0.1
+port=5222
+inport=5222
+inbound.quantity = 2
+outbound.quantity = 2
+keys=prosodymuc.dat
+
+[prosody-http]
+type=server
+host=127.0.0.1
+port=5280
+inport=5280
+keys=prosodyfile.dat
+
+[prosody-https]
+type=server
+host=127.0.0.1
+port=5281
+inport=5281
+keys=prosodyfile.dat
+</code></pre><p>Prosody s2s &amp; c2s handle &lsquo;server - server&rsquo; and &lsquo;client - server&rsquo; connections.<br>
+Prosody MUC is Multi User Chat.<br>
+Prosody HTTP &amp; HTTPS will be file upload.</p>
+<p>These separate domains need to be allocated properly in the <code>prosody.cfg.lua</code> file in the prosody &ldquo;Config directory&rdquo;.</p>
+<p>In this example we would replace<br>
+<code>“address1.b32.i2p”</code> = [prosody-s2s/prosody-c2s]<br>
+<code>“address2.b32.i2p”</code> = [prosody-s2s-muc/prosody-c2s-muc]<br>
+<code>“address3.b32.i2p”</code> = [prosody-http/prosody-https]</p>
+<p>The respective addresses will show up in your I2Pd  webconsole
+(You can generate a vanity address using <a href="https://github.com/PurpleI2P/i2pd-tools">i2pd-tools</a>).</p>
+<p>My <a href="../prosody.cfg.lua">prosody.cfg.lua</a> for reference (Could be outdated in the future).</p>
+<pre tabindex="0"><code>VirtualHost &#34;address1.b32.i2p&#34;
+ modules_enabled = { &#34;darknet&#34; };
+      darknet_only = true;
+      disco_items = {
+          { &#34;address2.b32.i2p&#34;, &#34;Public Chatrooms&#34; };
+          { &#34;address3.b32.i2p&#34;, &#34;Upload Files&#34; };
+      }
+
+
+Component &#34;Address2.b32.i2p&#34; &#34;muc&#34;
+        modules_enabled = { &#34;darknet&#34; };
+        darknet_only = true;
+
+Component &#34;Address3.b32.i2p&#34; &#34;http_file_share&#34;
+        modules_enabled = { &#34;darknet&#34; };
+        darknet_only = true;
+        http_file_share_daily_quota = 200*1024*1024; -- 200 MiB
+        http_file_share_expires_after = 7 * 86400; -- one week in seconds
+        http_file_share_size_limit = 100*1024*1024; -- 100 MiB
+</code></pre><h2 id="finishing">Finishing</h2>
+<p>You&rsquo;ll need to generate certificates for the Tor and/or I2P addresses.</p>
+<p><strong>For Tor:</strong><br>
+<code>prosodyctl cert generate onionaddress.onion</code></p>
+<p><strong>For I2P:</strong><br>
+<code>prosodyctl cert generate address1.b32.i2p</code><br>
+<code>prosodyctl cert generate address2.b32.i2p</code><br>
+<code>prosodyctl cert generate address3.b32.i2p</code></p>
+<p>You may also use OpenSSL to generate certificates (Example from <a href="https://i2pd.readthedocs.io/en/latest/tutorials/xmpp/">i2pd.readthedocs.io</a>).</p>
+<pre tabindex="0"><code>openssl genrsa -out /etc/prosody/certs/xxx.b32.i2p.key 2048
+openssl req -new -x509 -key /etc/prosody/certs/xxx.b32.i2p.key -out /etc/prosody/certs/xxx.b32.i2p.crt -days 3650
+chown root:prosody /etc/prosody/certs/*.b32.i2p.{key,crt}
+chmod 640 /etc/prosody/certs/*.b32.i2p.{key,crt}
+</code></pre><p>Move the certificates <em>from</em> the &ldquo;Data directory&rdquo; into the “certs” folder in your &ldquo;Config directory&rdquo;.</p>
+<pre tabindex="0"><code>cd /prosody/data/directory
+mv *.onion.* prosody/config/directory/certs
+mv *.b32.i2p.* prosody/config/directory/certs
+</code></pre><p>You can check your prosody setup and certs with:<br>
+<code>prosodyctl check</code></p>
+<p>You can start prosodyctl with:<br>
+<code>prosodyctl start</code>
+or by using your OS init system.</p>
+<p>You can add users with:</p>
+<p><code>prosodyctl adduser admin@onionaddress.onion</code></p>
+<p><code>prosodyctl adduser admin@address1.b32.i2p</code></p>
+<p>If the server has the proper modules enabled you can create one time use invites with:<br>
+<code>prosodyctl mod_invites generate onionaddress.onion</code><br>
+<code>prosodyctl mod_invites generate address1.b32.i2p</code></p>
+<p>Registrations can be public, but this should be done with extreme caution.</p>
+<p><em>Done!</em></p>
+<h2 id="connecting-with-clients">Connecting with clients</h2>
+<p>Connecting with XMPP clients must be done through proxies when using Tor or I2P.</p>
+<p><strong>Tor</strong><br>
+Type : SOCKS5<br>
+Host : localhost<br>
+Port : 9050</p>
+<p><strong>I2P</strong><br>
+Type : SOCKS5<br>
+Host : 127.0.0.1<br>
+Port : 4447</p>
+<p>You must have I2P / Tor daemon running client side as well as server side.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>
+<p><strong>XMPP client issues:</strong><br>
+File sharing through Tor / I2P has some support issues.<br>
+&lsquo;Conversations&rsquo; doesn&rsquo;t have issues file sharing with self signed certificates but <a href="https://dev.gajim.org/gajim/gajim/-/issues/11564">&lsquo;Gajim&rsquo; <em>currently</em> does</a>.<br>
+Some clients don&rsquo;t even support using proxies.</p>
+</li>
+<li>
+<p><strong>Tor - Tor / I2P - I2P  only:</strong><br>
+With exception XMPP over these protocols can only communicate to each other.<br>
+I can&rsquo;t send a message from a Tor address to someone using I2P or Clearnet address vice versa.</p>
+</li>
+<li>
+<p><strong>Technical Knowledge:</strong><br>
+While not extremely hard there is a learning curve with getting this set up and maintaining it.</p>
+</li>
+<li>
+<p><strong>Niche:</strong><br>
+Not a lot of people use XMPP over Tor, let alone I2P.</p>
+</li>
+</ul>
+<p>This paired with XMPP&rsquo;s already user choice first design makes trying to onboard someone less technical harder.<br>
+<em>This and other issues can be aided by sharing/using this setup.</em></p>
+<h2 id="resources">Resources</h2>
+<h3 id="instant-messenger-comparisons"><strong>Instant Messenger Comparisons</strong>:</h3>
+<p><a href="https://eylenburg.github.io/im_comparison.htm">eylenburg.github.io</a><br>
+<a href="https://www.securemessagingapps.com/">securemessagingapps.com</a><br>
+<a href="https://privacyspreadsheet.com/messaging-apps">privacyspreadsheet.com</a><br>
+<a href="https://docs.google.com/spreadsheets/d/1-UlA4-tslROBDS9IqHalWVztqZo7uxlCeKPQ-8uoFOU/edit?gid=0#gid=0">Digital Communications Protocols Spreadsheet</a><br>
+<a href="https://en.wikipedia.org/wiki/Comparison_of_cross-platform_instant_messaging_clients">Wikipedia Comparison of cross-platform instant messaging clients</a></p>
+<h3 id="tori2p-xmpp-">Tor/I2P XMPP :</h3>
+<p><strong>AT&rsquo;s Blog</strong><br>
+<a href="http://wajcun6t3tqaxrxopfqmvjwbojabns4r3c4icclj72eik74ooldmryyd.onion">Onion link</a> <br>
+<a href="http://mnemccsdsbtwupoawqiaco2llfmnw5i4b64chep2mvkmu2yqe4xq.b32.i2p">I2P link</a></p>
+<p><a href="https://jerrynya.fun/2024/08/17/6baec278c0274a8ba090a9c25ea4ddf0/">jerrynya.fun</a><br>
+<a href="https://i2pd.readthedocs.io/en/latest/tutorials/xmpp/">i2pd.readthedocs.io</a></p>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer><small>Made with <a href="https://codeberg.org/east/Polar-Bear/">Polar Bear ʕ•ᴥ• ʔ</a></small></footer>
+
+    
+</body>
+
+</html>

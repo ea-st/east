@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on east</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Private Messengers (plus XMPP over Tor &amp; I2P)</title>
+      <link>/blog/xmpp_tor_and_i2p/</link>
+      <pubDate>Thu, 22 May 2025 00:00:00 +0000</pubDate>
+      <guid>/blog/xmpp_tor_and_i2p/</guid>
+      <description>Messengers and Metadata A lot of modern messengers people use masquerade as privacy-respecting.&#xA;These supposedly &amp;ldquo;privacy-respecting&amp;rdquo; messengers commonly exhibit opposite behaviors&#xA;Selling out their users&amp;rsquo; data to private companies, governments, or even publicly due to a database hack.&#xA;Privacy is not the same thing as anonymity.&#xA;Knowing &amp;lsquo;Jane Doe&amp;rsquo; talked to &amp;lsquo;John Smith&amp;rsquo; at a certain time, even if information of the conversation may be private, has a lot of inferable information attached;</description>
+    </item>
     <item>
       <title>GnuPG</title>
       <link>/blog/gnupg/</link>
